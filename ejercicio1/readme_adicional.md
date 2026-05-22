@@ -84,4 +84,4 @@ Aunque funciona correctamente para este volumen de datos, este enfoque puede vol
 
 ![Datos del viaje](query2.png)
 
-![Estadisticas por genero](quer21.png)
+![Estadisticas por genero](query3.png)
