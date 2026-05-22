@@ -80,8 +80,12 @@ y finalmente se reescribe el archivo completo.
 
 Aunque funciona correctamente para este volumen de datos, este enfoque puede volverse más pesado conforme el dataset crezca, ya que cada ejecución requiere volver a cargar y escribir el archivo completo.
 
+
+## Querys en Trino con DBeaver
+
+## Conteo de registros 
 ![Conteo de registros](query1.png)
-
+## Datos del viaje
 ![Datos del viaje](query2.png)
-
+## Estadisticas por genero 
 ![Estadisticas por genero](query3.png)
