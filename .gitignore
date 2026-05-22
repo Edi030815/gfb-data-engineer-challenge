@@ -1,0 +1,17 @@
+# MinIO data (binarios internos)
+ejercicio1/Minio/
+
+# Airflow logs
+ejercicio1/Airflow/logs/
+
+# Python cache
+**/__pycache__/
+*.pyc
+
+# Variables de entorno (credenciales)
+.env
+ejercicio1/.env
+ejercicio1/Airflow/.env
+
+# Dataset Ecobici grande (1.5M filas — no subir a GitHub)
+ejercicio1/Airflow/dags/ecobici_data.csv
