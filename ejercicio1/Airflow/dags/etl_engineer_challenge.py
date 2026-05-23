@@ -10,7 +10,6 @@ from minio import Minio
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 
-# ── Config ───────────────────────────────────────────────────────────────────
 MINIO_ENDPOINT   = "minio:9000"
 MINIO_ACCESS_KEY = "minio"
 MINIO_SECRET_KEY = "minio1234"
@@ -27,13 +26,11 @@ default_args = {
     "retry_delay": timedelta(minutes=5),
 }
 
-# ── Helpers ──────────────────────────────────────────────────────────────────
 def _minio() -> Minio:
     return Minio(MINIO_ENDPOINT, access_key=MINIO_ACCESS_KEY,
                  secret_key=MINIO_SECRET_KEY, secure=False)
 
 
-# ── Task 1: Ingest CSV to Landing ────────────────────────────────────────────
 def ingest_to_landing() -> None:
     client = _minio()
 
@@ -49,25 +46,19 @@ def ingest_to_landing() -> None:
     print(f"Uploaded {LOCAL_CSV} → {LANDING_BUCKET}/data/data_prueba_tecnica.csv")
 
 
-# ── Task 2: Clean, Transform and Save to Bronze ──────────────────────────────
 def clean_transform_save() -> None:
     client = _minio()
 
-    # ── Read from Landing ────────────────────────────────────────────────────
     resp = client.get_object(LANDING_BUCKET, "data/data_prueba_tecnica.csv")
     df = pl.read_csv(io.BytesIO(resp.read()), infer_schema_length=10000,
                      ignore_errors=True)
 
-    # Fix Windows CRLF: strip \r from column names
     df.columns = [col.strip() for col in df.columns]
 
     print(f"Rows read      : {len(df)}")
     print(f"Columns        : {df.columns}")
     print(f"Null counts    :\n{df.null_count()}")
 
-    # ── Clean ────────────────────────────────────────────────────────────────
-
-    # 1. Drop rows with null or empty id
     before = len(df)
     df = df.filter(
         pl.col("id").is_not_null() &
@@ -75,25 +66,21 @@ def clean_transform_save() -> None:
     )
     print(f"Null/empty id removed  : {before - len(df)}")
 
-    # 2. Normalize text columns
     df = df.with_columns([
         pl.col("name").str.strip_chars().str.to_lowercase(),
         pl.col("company_id").str.strip_chars(),
         pl.col("status").str.strip_chars().str.to_lowercase(),
     ])
 
-    # 3. Deduplicate by id
     before = len(df)
     df = df.unique(subset=["id"])
     print(f"Duplicates removed     : {before - len(df)}")
 
-    # 4. Cast amount to float, remove negatives and zeros
     df = df.with_columns(pl.col("amount").cast(pl.Float64, strict=False))
     before = len(df)
     df = df.filter(pl.col("amount").is_not_null() & (pl.col("amount") > 0))
     print(f"Invalid amount removed : {before - len(df)}")
 
-    # 5. IQR x3 outlier removal on amount
     q1 = df["amount"].quantile(0.25)
     q3 = df["amount"].quantile(0.75)
     iqr = q3 - q1
@@ -103,7 +90,6 @@ def clean_transform_save() -> None:
     df = df.filter((pl.col("amount") >= lower) & (pl.col("amount") <= upper))
     print(f"Outliers removed (IQR x3): {before - len(df)}")
 
-    # 6. Parse dates
     df = df.with_columns([
         pl.col("created_at").str.strptime(pl.Date, "%Y-%m-%d", strict=False),
         pl.col("paid_at").str.strptime(pl.Date, "%Y-%m-%d", strict=False),
@@ -112,7 +98,6 @@ def clean_transform_save() -> None:
     df = df.filter(pl.col("created_at").is_not_null())
     print(f"Unparseable dates removed: {before - len(df)}")
 
-    # 7. Fix paid_at < created_at
     before = len(df)
     df = df.with_columns(
         pl.when(pl.col("paid_at") < pl.col("created_at"))
@@ -122,7 +107,6 @@ def clean_transform_save() -> None:
     )
     print(f"paid_at < created_at fixed (set to created_at)")
 
-    # 8. Filter valid status values
     valid_statuses = ["paid", "pending", "failed", "cancelled", "voided",
                       "refunded", "partially_paid"]
     before = len(df)
@@ -131,7 +115,6 @@ def clean_transform_save() -> None:
 
     print(f"Rows after cleaning    : {len(df)}")
 
-    # ── Aggregations: daily metrics per client ────────────────────────────────
     agg = df.group_by(["name", "created_at"]).agg([
         pl.len().alias("daily_tx_count"),
         pl.col("amount").sum().alias("daily_total_amount"),
@@ -140,7 +123,6 @@ def clean_transform_save() -> None:
     ])
     df = df.join(agg, on=["name", "created_at"], how="left")
 
-    # ── Save to Bronze ────────────────────────────────────────────────────────
     if not client.bucket_exists(BRONZE_BUCKET):
         client.make_bucket(BRONZE_BUCKET)
 
@@ -159,7 +141,6 @@ def clean_transform_save() -> None:
     print(f"Saved → {BRONZE_BUCKET}/master/data_prueba_tecnica.parquet  ({len(data):,} bytes)")
 
 
-# ── Task 3: Register Trino table ─────────────────────────────────────────────
 def create_trino_table() -> None:
     conn = trino.dbapi.connect(host=TRINO_HOST, port=TRINO_PORT, user=TRINO_USER)
     cur  = conn.cursor()
@@ -198,7 +179,6 @@ def create_trino_table() -> None:
     conn.close()
 
 
-# ── DAG definition ────────────────────────────────────────────────────────────
 with DAG(
     dag_id="etl_engineer_challenge",
     default_args=default_args,
