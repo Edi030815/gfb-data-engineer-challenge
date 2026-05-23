@@ -1,0 +1,44 @@
+{"timestamp":"2026-05-21T20:22:06.643349Z","level":"info","event":"DAG bundles loaded: dags-folder","logger":"airflow.dag_processing.bundles.manager.DagBundlesManager","filename":"manager.py","lineno":209}
+{"timestamp":"2026-05-21T20:22:06.646143Z","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/etl_engineer_challenge.py","logger":"airflow.dag_processing.dagbag.BundleDagBag","filename":"dagbag.py","lineno":469}
+{"timestamp":"2026-05-21T20:22:06.988176Z","level":"warning","event":"The `airflow.operators.python.PythonOperator` attribute is deprecated. Please use `'airflow.providers.standard.operators.python.PythonOperator'`.","category":"UserWarning","filename":"/opt/airflow/dags/etl_engineer_challenge.py","lineno":11,"logger":"py.warnings"}
+{"timestamp":"2026-05-21T20:22:07.064051Z","level":"info","event":"Rows read from landing: 10000","logger":"task.stdout"}
+{"timestamp":"2026-05-21T20:22:07.064917Z","level":"info","event":"Null counts:","logger":"task.stdout"}
+{"timestamp":"2026-05-21T20:22:07.065376Z","level":"info","event":"shape: (1, 7)","logger":"task.stdout"}
+{"timestamp":"2026-05-21T20:22:07.065703Z","level":"info","event":"┌─────┬──────┬────────────┬────────┬────────┬────────────┬─────────┐","logger":"task.stdout"}
+{"timestamp":"2026-05-21T20:22:07.066285Z","level":"info","event":"│ id  ┆ name ┆ company_id ┆ amount ┆ status ┆ created_at ┆ paid_at │","logger":"task.stdout"}
+{"timestamp":"2026-05-21T20:22:07.067287Z","level":"info","event":"│ --- ┆ ---  ┆ ---        ┆ ---    ┆ ---    ┆ ---        ┆ ---     │","logger":"task.stdout"}
+{"timestamp":"2026-05-21T20:22:07.067844Z","level":"info","event":"│ u32 ┆ u32  ┆ u32        ┆ u32    ┆ u32    ┆ u32        ┆ u32     │","logger":"task.stdout"}
+{"timestamp":"2026-05-21T20:22:07.068411Z","level":"info","event":"╞═════╪══════╪════════════╪════════╪════════╪════════════╪═════════╡","logger":"task.stdout"}
+{"timestamp":"2026-05-21T20:22:07.068829Z","level":"info","event":"│ 3   ┆ 3    ┆ 4          ┆ 0      ┆ 0      ┆ 0          ┆ 0       │","logger":"task.stdout"}
+{"timestamp":"2026-05-21T20:22:07.069297Z","level":"info","event":"└─────┴──────┴────────────┴────────┴────────┴────────────┴─────────┘","logger":"task.stdout"}
+{"timestamp":"2026-05-21T20:22:07.101525Z","level":"info","event":"Duplicates removed: 0","logger":"task.stdout"}
+{"timestamp":"2026-05-21T20:22:07.104552Z","level":"info","event":"Outliers removed: 267  (range [-204.02, 344.85])","logger":"task.stdout"}
+{"timestamp":"2026-05-21T20:22:07.131293Z","level":"info","event":"Rows after full cleaning: 9706","logger":"task.stdout"}
+{"timestamp":"2026-05-21T20:22:07.140160Z","level":"info","event":"shape: (9, 12)","logger":"task.stdout"}
+{"timestamp":"2026-05-21T20:22:07.141072Z","level":"info","event":"┌───────────┬───────────┬───────────┬───────────┬───┬───────────┬───────────┬───────────┬──────────┐","logger":"task.stdout"}
+{"timestamp":"2026-05-21T20:22:07.141610Z","level":"info","event":"│ statistic ┆ id        ┆ name      ┆ company_i ┆ … ┆ daily_tx_ ┆ daily_tot ┆ daily_avg ┆ daily_ma │","logger":"task.stdout"}
+{"timestamp":"2026-05-21T20:22:07.142138Z","level":"info","event":"│ ---       ┆ ---       ┆ ---       ┆ d         ┆   ┆ count     ┆ al_amount ┆ _amount   ┆ x_amount │","logger":"task.stdout"}
+{"timestamp":"2026-05-21T20:22:07.142801Z","level":"info","event":"│ str       ┆ str       ┆ str       ┆ ---       ┆   ┆ ---       ┆ ---       ┆ ---       ┆ ---      │","logger":"task.stdout"}
+{"timestamp":"2026-05-21T20:22:07.143388Z","level":"info","event":"│           ┆           ┆           ┆ str       ┆   ┆ f64       ┆ f64       ┆ f64       ┆ f64      │","logger":"task.stdout"}
+{"timestamp":"2026-05-21T20:22:07.143882Z","level":"info","event":"╞═══════════╪═══════════╪═══════════╪═══════════╪═══╪═══════════╪═══════════╪═══════════╪══════════╡","logger":"task.stdout"}
+{"timestamp":"2026-05-21T20:22:07.144294Z","level":"info","event":"│ count     ┆ 9706      ┆ 9703      ┆ 9702      ┆ … ┆ 9700.0    ┆ 9700.0    ┆ 9700.0    ┆ 9700.0   │","logger":"task.stdout"}
+{"timestamp":"2026-05-21T20:22:07.144838Z","level":"info","event":"│ null_coun ┆ 0         ┆ 3         ┆ 4         ┆ … ┆ 6.0       ┆ 6.0       ┆ 6.0       ┆ 6.0      │","logger":"task.stdout"}
+{"timestamp":"2026-05-21T20:22:07.145466Z","level":"info","event":"│ t         ┆           ┆           ┆           ┆   ┆           ┆           ┆           ┆          │","logger":"task.stdout"}
+{"timestamp":"2026-05-21T20:22:07.145941Z","level":"info","event":"│ mean      ┆ null      ┆ null      ┆ null      ┆ … ┆ 72.798351 ┆ 5382.8302 ┆ 73.60166  ┆ 284.4411 │","logger":"task.stdout"}
+{"timestamp":"2026-05-21T20:22:07.147471Z","level":"info","event":"│           ┆           ┆           ┆           ┆   ┆           ┆ 33        ┆           ┆ 38       │","logger":"task.stdout"}
+{"timestamp":"2026-05-21T20:22:07.148524Z","level":"info","event":"│ std       ┆ null      ┆ null      ┆ null      ┆ … ┆ 14.974218 ┆ 1397.8652 ┆ 9.565055  ┆ 42.36176 │","logger":"task.stdout"}
+{"timestamp":"2026-05-21T20:22:07.149150Z","level":"info","event":"│           ┆           ┆           ┆           ┆   ┆           ┆           ┆           ┆ 8        │","logger":"task.stdout"}
+{"timestamp":"2026-05-21T20:22:07.150320Z","level":"info","event":"│ min       ┆ 0008c6c98 ┆ mip0xffff ┆ *******   ┆ … ┆ 1.0       ┆ 47.64     ┆ 47.64     ┆ 47.64    │","logger":"task.stdout"}
+{"timestamp":"2026-05-21T20:22:07.150947Z","level":"info","event":"│           ┆ fa03633ac ┆           ┆           ┆   ┆           ┆           ┆           ┆          │","logger":"task.stdout"}
+{"timestamp":"2026-05-21T20:22:07.151658Z","level":"info","event":"│           ┆ 39c5af441 ┆           ┆           ┆   ┆           ┆           ┆           ┆          │","logger":"task.stdout"}
+{"timestamp":"2026-05-21T20:22:07.152235Z","level":"info","event":"│           ┆ 8df…      ┆           ┆           ┆   ┆           ┆           ┆           ┆          │","logger":"task.stdout"}
+{"timestamp":"2026-05-21T20:22:07.152752Z","level":"info","event":"│ 25%       ┆ null      ┆ null      ┆ null      ┆ … ┆ 64.0      ┆ 4394.71   ┆ 65.991944 ┆ 254.18   │","logger":"task.stdout"}
+{"timestamp":"2026-05-21T20:22:07.153234Z","level":"info","event":"│ 50%       ┆ null      ┆ null      ┆ null      ┆ … ┆ 72.0      ┆ 5376.49   ┆ 74.368    ┆ 291.36   │","logger":"task.stdout"}
+{"timestamp":"2026-05-21T20:22:07.153605Z","level":"info","event":"│ 75%       ┆ null      ┆ null      ┆ null      ┆ … ┆ 84.0      ┆ 6252.16   ┆ 79.579322 ┆ 317.45   │","logger":"task.stdout"}
+{"timestamp":"2026-05-21T20:22:07.154009Z","level":"info","event":"│ max       ┆ ffee16f1b ┆ muebles   ┆ cbf1c8b09 ┆ … ┆ 112.0     ┆ 8805.33   ┆ 191.0     ┆ 344.58   │","logger":"task.stdout"}
+{"timestamp":"2026-05-21T20:22:07.154434Z","level":"info","event":"│           ┆ 4edfb1357 ┆ chidos    ┆ cd5b54941 ┆   ┆           ┆           ┆           ┆          │","logger":"task.stdout"}
+{"timestamp":"2026-05-21T20:22:07.154886Z","level":"info","event":"│           ┆ 7d14b8125 ┆           ┆ 6d49d220a ┆   ┆           ┆           ┆           ┆          │","logger":"task.stdout"}
+{"timestamp":"2026-05-21T20:22:07.155252Z","level":"info","event":"│           ┆ 632…      ┆           ┆ 40c…      ┆   ┆           ┆           ┆           ┆          │","logger":"task.stdout"}
+{"timestamp":"2026-05-21T20:22:07.155609Z","level":"info","event":"└───────────┴───────────┴───────────┴───────────┴───┴───────────┴───────────┴───────────┴──────────┘","logger":"task.stdout"}
+{"timestamp":"2026-05-21T20:22:07.268325Z","level":"info","event":"Parquet saved → bck-bronze/master/data_prueba_tecnica.parquet  (320,384 bytes)","logger":"task.stdout"}
+{"timestamp":"2026-05-21T20:22:07.268777Z","level":"info","event":"Done. Returned value was: None","logger":"airflow.task.operators.airflow.providers.standard.operators.python.PythonOperator","filename":"python.py","lineno":229}

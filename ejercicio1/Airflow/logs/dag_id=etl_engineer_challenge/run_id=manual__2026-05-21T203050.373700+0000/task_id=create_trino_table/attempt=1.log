@@ -1,0 +1,7 @@
+{"timestamp":"2026-05-21T20:30:53.965799Z","level":"info","event":"DAG bundles loaded: dags-folder","logger":"airflow.dag_processing.bundles.manager.DagBundlesManager","filename":"manager.py","lineno":209}
+{"timestamp":"2026-05-21T20:30:53.969332Z","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/etl_engineer_challenge.py","logger":"airflow.dag_processing.dagbag.BundleDagBag","filename":"dagbag.py","lineno":469}
+{"timestamp":"2026-05-21T20:30:54.382023Z","level":"warning","event":"The `airflow.operators.python.PythonOperator` attribute is deprecated. Please use `'airflow.providers.standard.operators.python.PythonOperator'`.","category":"UserWarning","filename":"/opt/airflow/dags/etl_engineer_challenge.py","lineno":11,"logger":"py.warnings"}
+{"timestamp":"2026-05-21T20:30:56.071421Z","level":"info","event":"Schema bronze.prueba ready.","logger":"task.stdout"}
+{"timestamp":"2026-05-21T20:30:57.544750Z","level":"info","event":"Table bronze.prueba.tbl_data created.","logger":"task.stdout"}
+{"timestamp":"2026-05-21T20:30:58.688288Z","level":"info","event":"Row count in Trino: 9706","logger":"task.stdout"}
+{"timestamp":"2026-05-21T20:30:58.688808Z","level":"info","event":"Done. Returned value was: None","logger":"airflow.task.operators.airflow.providers.standard.operators.python.PythonOperator","filename":"python.py","lineno":229}

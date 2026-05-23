@@ -1,0 +1,27 @@
+{"timestamp":"2026-05-21T23:00:01.037579Z","level":"info","event":"DAG bundles loaded: dags-folder","logger":"airflow.dag_processing.bundles.manager.DagBundlesManager","filename":"manager.py","lineno":209}
+{"timestamp":"2026-05-21T23:00:01.040616Z","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/ecobici_pipeline.py","logger":"airflow.dag_processing.dagbag.BundleDagBag","filename":"dagbag.py","lineno":469}
+{"timestamp":"2026-05-21T23:00:01.405398Z","level":"warning","event":"The `airflow.operators.python.PythonOperator` attribute is deprecated. Please use `'airflow.providers.standard.operators.python.PythonOperator'`.","category":"UserWarning","filename":"/opt/airflow/dags/ecobici_pipeline.py","lineno":11,"logger":"py.warnings"}
+{"timestamp":"2026-05-21T23:00:02.346443Z","level":"info","event":"Rows read      : 1594967","logger":"task.stdout"}
+{"timestamp":"2026-05-21T23:00:02.347124Z","level":"info","event":"Columns        : ['genero_usuario', 'edad_usuario', 'bici', 'ciclo_estacion_retiro', 'fecha_retiro', 'hora_retiro', 'ciclo_estacion_arribo', 'fecha_arribo', 'hora_arribo']","logger":"task.stdout"}
+{"timestamp":"2026-05-21T23:00:02.347745Z","level":"info","event":"Null counts    :","logger":"task.stdout"}
+{"timestamp":"2026-05-21T23:00:02.348264Z","level":"info","event":"shape: (1, 9)","logger":"task.stdout"}
+{"timestamp":"2026-05-21T23:00:02.348773Z","level":"info","event":"┌────────────┬────────────┬──────┬────────────┬───┬────────────┬───────────┬───────────┬───────────┐","logger":"task.stdout"}
+{"timestamp":"2026-05-21T23:00:02.349371Z","level":"info","event":"│ genero_usu ┆ edad_usuar ┆ bici ┆ ciclo_esta ┆ … ┆ hora_retir ┆ ciclo_est ┆ fecha_arr ┆ hora_arri │","logger":"task.stdout"}
+{"timestamp":"2026-05-21T23:00:02.349876Z","level":"info","event":"│ ario       ┆ io         ┆ ---  ┆ cion_retir ┆   ┆ o          ┆ acion_arr ┆ ibo       ┆ bo        │","logger":"task.stdout"}
+{"timestamp":"2026-05-21T23:00:02.353111Z","level":"info","event":"│ ---        ┆ ---        ┆ u32  ┆ o          ┆   ┆ ---        ┆ ibo       ┆ ---       ┆ ---       │","logger":"task.stdout"}
+{"timestamp":"2026-05-21T23:00:02.353879Z","level":"info","event":"│ u32        ┆ u32        ┆      ┆ ---        ┆   ┆ u32        ┆ ---       ┆ u32       ┆ u32       │","logger":"task.stdout"}
+{"timestamp":"2026-05-21T23:00:02.354501Z","level":"info","event":"│            ┆            ┆      ┆ u32        ┆   ┆            ┆ u32       ┆           ┆           │","logger":"task.stdout"}
+{"timestamp":"2026-05-21T23:00:02.355059Z","level":"info","event":"╞════════════╪════════════╪══════╪════════════╪═══╪════════════╪═══════════╪═══════════╪═══════════╡","logger":"task.stdout"}
+{"timestamp":"2026-05-21T23:00:02.355477Z","level":"info","event":"│ 0          ┆ 0          ┆ 0    ┆ 0          ┆ … ┆ 0          ┆ 0         ┆ 0         ┆ 0         │","logger":"task.stdout"}
+{"timestamp":"2026-05-21T23:00:02.355883Z","level":"info","event":"└────────────┴────────────┴──────┴────────────┴───┴────────────┴───────────┴───────────┴───────────┘","logger":"task.stdout"}
+{"timestamp":"2026-05-21T23:00:02.490708Z","level":"info","event":"Invalid gender removed : 77948","logger":"task.stdout"}
+{"timestamp":"2026-05-21T23:00:02.528701Z","level":"info","event":"Invalid age removed    : 91","logger":"task.stdout"}
+{"timestamp":"2026-05-21T23:00:02.550516Z","level":"info","event":"Unparseable dates removed: 0","logger":"task.stdout"}
+{"timestamp":"2026-05-21T23:00:02.746103Z","level":"info","event":"Invalid duration removed : 46","logger":"task.stdout"}
+{"timestamp":"2026-05-21T23:00:03.248418Z","level":"info","event":"Duplicates removed     : 0","logger":"task.stdout"}
+{"timestamp":"2026-05-21T23:00:03.364646Z","level":"info","event":"Rows after cleaning    : 1516882","logger":"task.stdout"}
+{"timestamp":"2026-05-21T23:00:04.474133Z","level":"info","event":"  [2026/04] 1516778 existing + 1516778 new → 1516778 total","logger":"task.stdout"}
+{"timestamp":"2026-05-21T23:00:05.286909Z","level":"info","event":"  Saved → bck-bronze/ecobici/year=2026/month=04/ecobici.parquet  (24,286,399 bytes)","logger":"task.stdout"}
+{"timestamp":"2026-05-21T23:00:05.324409Z","level":"info","event":"  [2026/03] 104 existing + 104 new → 104 total","logger":"task.stdout"}
+{"timestamp":"2026-05-21T23:00:05.414597Z","level":"info","event":"  Saved → bck-bronze/ecobici/year=2026/month=03/ecobici.parquet  (6,140 bytes)","logger":"task.stdout"}
+{"timestamp":"2026-05-21T23:00:05.415205Z","level":"info","event":"Done. Returned value was: None","logger":"airflow.task.operators.airflow.providers.standard.operators.python.PythonOperator","filename":"python.py","lineno":229}
